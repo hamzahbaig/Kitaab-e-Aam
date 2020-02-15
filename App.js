@@ -12,16 +12,66 @@ import SignIn from './src/screens/Authentication/SignIn';
 import SignUp from './src/screens/Authentication/SignUp';
 import AddBooks from './src/screens/LibraryScreen/AddBooks';
 import BookDetails from './src/screens/LibraryScreen/BookDetails';
+import MyBooks from './src/screens/ProfileScreen/MyBooks'
 const AppBottomNavigation = createBottomTabNavigator({
-  Profile: ProfileScreen,
-  Search: SearchScreen,
-  Notifications: Notifications,
-  Library: Library,
+  Profile: {
+    screen: ProfileScreen,
+    navigationOptions: {
+      title: null,
+      headerShown: false,
+    },
+  },
+  Search: {
+    screen: SearchScreen,
+    navigationOptions: {
+      title: null,
+      headerShown: false,
+    },
+  },
+  Notifications: {
+    screen: Notifications,
+    navigationOptions: {
+      title: null,
+      headerShown: false,
+    },
+  },
+  Library: {
+    screen: Library,
+    navigationOptions: {
+      title: null,
+      headerShown: false,
+    },
+  },
 });
 const AppStack = createStackNavigator({
-  MainStack: AppBottomNavigation,
-  AddBooks: AddBooks,
-  BookDetails: BookDetails,
+  MainStack: {
+    screen: AppBottomNavigation,
+    navigationOptions: {
+      title: null,
+      headerShown: false,
+    },
+  },
+  AddBooks: {
+    screen: AddBooks,
+    navigationOptions: {
+      title: null,
+      headerShown: false,
+    },
+  },
+  BookDetails: {
+    screen: BookDetails,
+    navigationOptions: {
+      title: null,
+      headerShown: false,
+    },
+  },
+  MyBooks: {
+    screen: MyBooks,
+    navigationOptions: {
+      title: null,
+      headerShown: false,
+    },
+  },
 });
 
 const AuthStack = createStackNavigator({

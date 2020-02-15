@@ -23,7 +23,7 @@ class BookDetails extends React.Component {
         <Text>
           Book Owner: {book.authorFirstName} {book.authorLastName}
         </Text>
-        <Text>Uploaded: {moment(book.createdAt.toDate()).calendar()}</Text>
+        <Text>Uploaded: {moment(book.createdAt.toDate()).fromNow()}</Text>
         {book.available ? (
           <View>
             <TextInput

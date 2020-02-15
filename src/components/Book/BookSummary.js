@@ -19,7 +19,7 @@ const BookSummary = ({book, navigation}) => {
       style={styles.container}>
       <Text>{book.bookName}</Text>
       <Text>{book.bookDescription}</Text>
-      <Text>{moment(book.createdAt.toDate()).calendar()}</Text>
+      <Text>{moment(book.createdAt.toDate()).fromNow()}</Text>
     </TouchableOpacity>
   );
 };

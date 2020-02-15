@@ -1,8 +1,14 @@
 import React from 'react';
-import {Text} from 'react-native';
+import {Text, View} from 'react-native';
+import Header from '../../components/Header/Header';
 
 export default class Notifications extends React.Component {
   render() {
-    return <Text>NotificationsScreen</Text>;
+    return (
+      <View>
+        <Header />
+        <Text>NotificationsScreen</Text>
+      </View>
+    );
   }
 }
