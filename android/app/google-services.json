@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "569618826442",
+    "firebase_url": "https://libraryportal-febf8.firebaseio.com",
+    "project_id": "libraryportal-febf8",
+    "storage_bucket": "libraryportal-febf8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:569618826442:android:c2ddf367f9c23b37682033",
+        "android_client_info": {
+          "package_name": "com.libraryportal"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "569618826442-io4u1d9tdialae6rcobjn94g2t2p5a9d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBilHCslBiwAsuUDsnu-kk2pS-67dC9Pxc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "569618826442-io4u1d9tdialae6rcobjn94g2t2p5a9d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
