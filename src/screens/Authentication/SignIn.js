@@ -1,7 +1,23 @@
 import React from 'react';
-import {View, StyleSheet, TextInput, Text,Button} from 'react-native';
+import {View, StyleSheet, TextInput, Text, Button} from 'react-native';
+import { connect } from "react-redux";
+import { signIn } from "../../store/actions/authActions";
 
 class SignIn extends React.Component {
+  state = {
+    email: '',
+    password: '',
+  };
+
+  handleChange = key => value => {
+    this.setState({
+      [key]: value,
+    });
+  };
+
+  handleSubmit = e => {
+    this.props.signIn(this.state);
+  };
   render() {
     return (
       <View style={styles.container}>
@@ -15,6 +31,7 @@ class SignIn extends React.Component {
             width: '90%',
             marginBottom: 30,
           }}
+          onChangeText={this.handleChange("email")}
         />
         <TextInput
           placeholder={'Password'}
@@ -24,9 +41,13 @@ class SignIn extends React.Component {
             borderBottomColor: 'black',
             width: '90%',
           }}
+          onChangeText={this.handleChange("password")}
         />
-        <Button title={"Login"} />
-        <Button title={"Register"} onPress= {() => this.props.navigation.navigate("SignUp")} />
+        <Button title={'Login'} onPress={this.handleSubmit} />
+        <Button
+          title={'Register'}
+          onPress={() => this.props.navigation.navigate('SignUp')}
+        />
       </View>
     );
   }
@@ -42,4 +63,16 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignIn;
+const mapStateToProps = state => {
+  return {
+    authError: state.auth.authError,
+    auth: state.firebase.auth,
+  };
+};
+const mapDispatchToProps = dispatch => {
+  return {
+    signIn: creds => dispatch(signIn(creds)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
