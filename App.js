@@ -3,27 +3,35 @@ import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
 
-import AuthLoading from './src/screens/Authentication/AuthLoading'
+import AuthLoading from './src/screens/Authentication/AuthLoading';
 import ProfileScreen from './src/screens/ProfileScreen/ProfileScreen';
+import SearchScreen from './src/screens/SearchScreen/Search';
+import Notifications from './src/screens/NotifcationsScreen/Notifications';
+import Library from './src/screens/LibraryScreen/Library';
 import SignIn from './src/screens/Authentication/SignIn';
 import SignUp from './src/screens/Authentication/SignUp';
+import AddBooks from './src/screens/LibraryScreen/AddBooks';
 
-
-const AppStack = createStackNavigator({
+const AppBottomNavigation = createBottomTabNavigator({
   Profile: ProfileScreen,
+  Search: SearchScreen,
+  Notifications: Notifications,
+  Library: Library,
+});
+const AppStack = createStackNavigator({
+  MainStack: AppBottomNavigation,
+  AddBooks: AddBooks
 });
 
 const AuthStack = createStackNavigator({
   SignIn: SignIn,
-  SignUp: SignUp
-})
+  SignUp: SignUp,
+});
 
 export default createAppContainer(
-  createSwitchNavigator(
-    {
-      AuthLoading: AuthLoading,
-      App: AppStack,
-      Auth: AuthStack
-    }
-  )
-)
+  createSwitchNavigator({
+    AuthLoading: AuthLoading,
+    App: AppStack,
+    Auth: AuthStack,
+  }),
+);

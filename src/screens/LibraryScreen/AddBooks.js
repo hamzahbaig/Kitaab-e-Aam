@@ -1,30 +1,31 @@
 import React from 'react';
-import {View, StyleSheet, TextInput, Text, Button} from 'react-native';
-import { connect } from "react-redux";
-import { signIn } from "../../store/actions/authActions";
+import {View, Text, TextInput, StyleSheet, Button} from 'react-native';
+import {connect} from 'react-redux';
+import {createProject} from '../../store/actions/projectActions';
 
-class SignIn extends React.Component {
+class AddBooks extends React.Component {
   state = {
-    email: '',
-    password: '',
+    bookName: '',
+    bookDescription: '',
   };
 
   handleChange = key => value => {
+    console.log(value);
     this.setState({
       [key]: value,
     });
   };
 
   handleSubmit = e => {
-    this.props.signIn(this.state);
+    this.props.createProject(this.state);
   };
-  
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text>SIGN IN</Text>
+      <View>
+        <Text></Text>
         <TextInput
-          placeholder={'Email'}
+          placeholder={'BookName'}
           style={{
             height: 40,
             borderBottomWidth: 1,
@@ -32,22 +33,22 @@ class SignIn extends React.Component {
             width: '90%',
             marginBottom: 30,
           }}
-          onChangeText={this.handleChange("email")}
+          onChangeText={this.handleChange('bookName')}
         />
         <TextInput
-          placeholder={'Password'}
+          placeholder={'Book Description'}
           style={{
-            height: 40,
+            height: 70,
             borderBottomWidth: 1,
             borderBottomColor: 'black',
             width: '90%',
           }}
-          onChangeText={this.handleChange("password")}
+          multiline={true}
+          onChangeText={this.handleChange('bookDescription')}
         />
-        <Button title={'Login'} onPress={this.handleSubmit} />
         <Button
-          title={'Register'}
-          onPress={() => this.props.navigation.navigate('SignUp')}
+          title={'Done'}
+          onPress={() => this.props.createProject(this.state)}
         />
       </View>
     );
@@ -66,14 +67,13 @@ const styles = StyleSheet.create({
 
 const mapStateToProps = state => {
   return {
-    authError: state.auth.authError,
     auth: state.firebase.auth,
   };
 };
 const mapDispatchToProps = dispatch => {
   return {
-    signIn: creds => dispatch(signIn(creds)),
+    createProject: project => dispatch(createProject(project)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(AddBooks);
