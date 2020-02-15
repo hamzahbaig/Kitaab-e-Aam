@@ -1,12 +1,12 @@
-import React from 'react'
-import {View,Text} from 'react-native'
+import React from 'react';
+import {View, Text} from 'react-native';
 
 export default class HomeScreen extends React.Component {
-    render() {
-        return (
-            <View>
-                <Text>HamzahBaig</Text>
-            </View>
-        )
-    }
+  render() {
+    return (
+      <View>
+        <Text>HamzahBaig</Text>
+      </View>
+    );
+  }
 }
