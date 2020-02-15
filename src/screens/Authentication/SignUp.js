@@ -1,13 +1,33 @@
 import React from 'react';
-import {View, StyleSheet, TextInput, Text,Button} from 'react-native';
+import {View, StyleSheet, TextInput, Text, Button} from 'react-native';
 
-class SignIn extends React.Component {
+class SignUp extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>SIGN IN</Text>
+        <Text>SIGN UP</Text>
         <TextInput
           placeholder={'Email'}
+          style={{
+            height: 40,
+            borderBottomWidth: 1,
+            borderBottomColor: 'black',
+            width: '90%',
+            marginBottom: 30,
+          }}
+        />
+        <TextInput
+          placeholder={'First Name'}
+          style={{
+            height: 40,
+            borderBottomWidth: 1,
+            borderBottomColor: 'black',
+            width: '90%',
+            marginBottom: 30,
+          }}
+        />
+        <TextInput
+          placeholder={'Last Name'}
           style={{
             height: 40,
             borderBottomWidth: 1,
@@ -25,8 +45,7 @@ class SignIn extends React.Component {
             width: '90%',
           }}
         />
-        <Button title={"Login"} />
-        <Button title={"Register"} />
+        <Button title={'Register'} />
       </View>
     );
   }
@@ -42,4 +61,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default SignIn;
+export default SignUp
