@@ -11,7 +11,7 @@ import Library from './src/screens/LibraryScreen/Library';
 import SignIn from './src/screens/Authentication/SignIn';
 import SignUp from './src/screens/Authentication/SignUp';
 import AddBooks from './src/screens/LibraryScreen/AddBooks';
-
+import BookDetails from './src/screens/LibraryScreen/BookDetails';
 const AppBottomNavigation = createBottomTabNavigator({
   Profile: ProfileScreen,
   Search: SearchScreen,
@@ -20,7 +20,8 @@ const AppBottomNavigation = createBottomTabNavigator({
 });
 const AppStack = createStackNavigator({
   MainStack: AppBottomNavigation,
-  AddBooks: AddBooks
+  AddBooks: AddBooks,
+  BookDetails: BookDetails,
 });
 
 const AuthStack = createStackNavigator({

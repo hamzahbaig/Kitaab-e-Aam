@@ -1,22 +1,14 @@
 import React from 'react';
 import BookSummary from './BookSummary';
-import {View, StyleSheet, FlatList} from 'react-native';
+import {View, FlatList} from 'react-native';
 
-const BookList = ({books}) => {
+const BookList = ({books, navigation}) => {
   return (
-    <View style={styles.container}>
-      <FlatList data={books} renderItem={(book) => <BookSummary book={book} />} />
-    </View>
+    <FlatList
+      data={books}
+      renderItem={book => <BookSummary book={book} navigation={navigation} />}
+    />
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    height: '100%',
-    width: '100%',
-    // alignSelf: 'center',
-    alignItems: 'center',
-  },
-});
 
 export default BookList;

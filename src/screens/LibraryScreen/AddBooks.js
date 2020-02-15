@@ -10,7 +10,6 @@ class AddBooks extends React.Component {
   };
 
   handleChange = key => value => {
-    console.log(value);
     this.setState({
       [key]: value,
     });

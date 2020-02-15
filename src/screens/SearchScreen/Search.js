@@ -12,7 +12,7 @@ class Search extends React.Component {
     const {books} = this.props
     return (
       <View style={styles.containter}>
-        <BookList books = {books} />
+        <BookList books = {books} navigation={this.props.navigation}/>
       </View>
     );
   }
@@ -28,6 +28,7 @@ const styles = StyleSheet.create({
   containter: {
     height: '100%',
     width: '100%',
+    alignItems:'center'
   },
 });
 
