@@ -26,7 +26,7 @@ class SignIn extends React.Component {
           }}
         />
         <Button title={"Login"} />
-        <Button title={"Register"} />
+        <Button title={"Register"} onPress= {() => this.props.navigation.navigate("SignUp")} />
       </View>
     );
   }
