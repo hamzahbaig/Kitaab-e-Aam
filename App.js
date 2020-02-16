@@ -43,7 +43,6 @@ const AppBottomNavigation = createBottomTabNavigator({
       headerShown: false,
     },
   },
- 
 });
 const AppStack = createStackNavigator({
   MainStack: {
@@ -84,8 +83,20 @@ const AppStack = createStackNavigator({
 });
 
 const AuthStack = createStackNavigator({
-  SignIn: SignIn,
-  SignUp: SignUp,
+  SignIn: {
+    screen: SignIn,
+    navigationOptions: {
+      title: null,
+      headerShown: false,
+    },
+  },
+  SignUp: {
+    screen: SignUp,
+    navigationOptions: {
+      title: null,
+      headerShown: false,
+    },
+  },
 });
 
 export default createAppContainer(

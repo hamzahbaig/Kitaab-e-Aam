@@ -1,8 +1,18 @@
 import React from 'react';
-import {View, Text, TextInput, StyleSheet, Button} from 'react-native';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  Button,
+  StatusBar,
+  KeyboardAvoidingView,
+} from 'react-native';
 import {connect} from 'react-redux';
 import {createProject} from '../../store/actions/projectActions';
+import {Fonts} from '../../assets/fonts/Fonts';
 
+import ButtonComponent from '../../components/Button/ButtonComponent';
 class AddBooks extends React.Component {
   state = {
     bookName: '',
@@ -21,32 +31,45 @@ class AddBooks extends React.Component {
 
   render() {
     return (
-      <View>
-        <Text></Text>
-        <TextInput
-          placeholder={'BookName'}
+      <View style={styles.container}>
+        <StatusBar backgroundColor="white" barStyle="dark-content" />
+
+        <Text
+          style={{fontFamily: Fonts.avenirBlack, fontSize: 30, marginTop: 50}}>
+          Add your Book!
+        </Text>
+        <View
           style={{
-            height: 40,
-            borderBottomWidth: 1,
-            borderBottomColor: 'black',
-            width: '90%',
-            marginBottom: 30,
-          }}
-          onChangeText={this.handleChange('bookName')}
-        />
-        <TextInput
-          placeholder={'Book Description'}
-          style={{
-            height: 70,
-            borderBottomWidth: 1,
-            borderBottomColor: 'black',
-            width: '90%',
-          }}
-          multiline={true}
-          onChangeText={this.handleChange('bookDescription')}
-        />
-        <Button
-          title={'Done'}
+            height: '55%',
+            width: '100%',
+            alignItems: 'center',
+            paddingTop: 60,
+          }}>
+          <TextInput
+            placeholder={'Book Name'}
+            style={{
+              height: 40,
+              borderBottomWidth: 0.7,
+              borderBottomColor: '#707070',
+              width: '90%',
+              marginBottom: 20,
+            }}
+            onChangeText={this.handleChange('bookName')}
+          />
+          <TextInput
+            placeholder={'Book Description'}
+            style={{
+              height: 70,
+              borderBottomWidth: 0.7,
+              borderBottomColor: '#707070',
+              width: '90%',
+            }}
+            multiline={true}
+            onChangeText={this.handleChange('bookDescription')}
+          />
+        </View>
+        <ButtonComponent
+          title={'Add your Book'}
           onPress={() => this.props.createProject(this.state)}
         />
       </View>
@@ -59,8 +82,8 @@ const styles = StyleSheet.create({
     flex: 1,
     height: '100%',
     width: '100%',
-    justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'white',
   },
 });
 

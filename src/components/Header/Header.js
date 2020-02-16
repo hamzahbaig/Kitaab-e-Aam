@@ -28,7 +28,7 @@ const styles = StyleSheet.create({
   container: {
     height: phoneHeight * 0.08,
     width: phoneWidth,
-    backgroundColor: '#20266A',
+    backgroundColor: '#68C1B5',
     alignItems: 'center',
     justifyContent: 'center',
   },
