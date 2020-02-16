@@ -11,3 +11,9 @@
 ###           npm install
 #### 6. Once all the dependencies are installed. Run command
 ###          react-native run-android
+
+
+### Important Links 
+
+#### Apk Link:
+https://drive.google.com/open?id=14WUOEfwjkF37pRztB2Cn7uy-hwOxXhLm
