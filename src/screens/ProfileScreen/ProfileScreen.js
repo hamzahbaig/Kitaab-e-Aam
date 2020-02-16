@@ -4,13 +4,14 @@ import {connect} from 'react-redux';
 import {signOut} from '../../store/actions/authActions';
 import Header from '../../components/Header/Header';
 import {Fonts} from '../../assets/fonts/Fonts';
+import * as Animatable from 'react-native-animatable';
 
 class ProfileScreen extends React.Component {
   render() {
     return (
       <View style={{height: '100%', width: '100%', backgroundColor: 'white'}}>
         <StatusBar backgroundColor="#68C1B5" barStyle="light-content" />
-        <Header title={"Profile"} />
+        <Header title={'Profile'} />
         <View
           style={{
             height: '20%',
@@ -20,7 +21,8 @@ class ProfileScreen extends React.Component {
             alignItems: 'flex-end',
             paddingBottom: 20,
           }}>
-          <View
+          <Animatable.View
+            animation="slideInLeft"
             style={{
               height: '70%',
               width: '30%',
@@ -43,10 +45,10 @@ class ProfileScreen extends React.Component {
                   fontSize: 24,
                   fontFamily: Fonts.avenirHeavy,
                 }}>
-                HB
+                {this.props.profile.initals}
               </Text>
             </View>
-          </View>
+          </Animatable.View>
           <View
             style={{
               height: '70%',
@@ -60,7 +62,7 @@ class ProfileScreen extends React.Component {
                 fontSize: 28,
                 fontFamily: Fonts.avenirBlack,
               }}>
-              Hamzah
+              {this.props.profile.firstName}
             </Text>
             <Text
               style={{
@@ -68,7 +70,7 @@ class ProfileScreen extends React.Component {
                 fontSize: 22,
                 fontFamily: Fonts.avenirLight,
               }}>
-              Baig
+              {this.props.profile.lastName}
             </Text>
           </View>
         </View>
@@ -152,10 +154,18 @@ class ProfileScreen extends React.Component {
   }
 }
 
+const mapStateToProps = state => {
+  console.log(state.firebase.profile);
+  return {
+    authError: state.auth.authError,
+    auth: state.firebase.auth,
+    profile: state.firebase.profile,
+  };
+};
 const mapDispatchToProps = dispatch => {
   return {
     signOut: () => dispatch(signOut()),
   };
 };
 
-export default connect(null, mapDispatchToProps)(ProfileScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);

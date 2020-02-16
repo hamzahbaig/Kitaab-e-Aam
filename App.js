@@ -2,7 +2,8 @@ import React from 'react';
 import {createAppContainer, createSwitchNavigator} from 'react-navigation';
 import {createBottomTabNavigator} from 'react-navigation-tabs';
 import {createStackNavigator} from 'react-navigation-stack';
-
+import Icon from 'react-native-vector-icons/AntDesign';
+import Icon1 from 'react-native-vector-icons/Ionicons';
 import AuthLoading from './src/screens/Authentication/AuthLoading';
 import ProfileScreen from './src/screens/ProfileScreen/ProfileScreen';
 import SearchScreen from './src/screens/SearchScreen/Search';
@@ -14,12 +15,16 @@ import AddBooks from './src/screens/LibraryScreen/AddBooks';
 import BookDetails from './src/screens/LibraryScreen/BookDetails';
 import BorrowedBooks from './src/screens/ProfileScreen/BorrowedBooks';
 import LentBooks from './src/screens/ProfileScreen/LentBooks';
+import SplashScreen from './src/screens/SplashScreen/SplashScreen';
 const AppBottomNavigation = createBottomTabNavigator({
   Profile: {
     screen: ProfileScreen,
     navigationOptions: {
       title: null,
       headerShown: false,
+      tabBarIcon: ({tintColor}) => (
+        <Icon name={'user'} color={tintColor} size={23} />
+      ),
     },
   },
   Search: {
@@ -27,6 +32,9 @@ const AppBottomNavigation = createBottomTabNavigator({
     navigationOptions: {
       title: null,
       headerShown: false,
+      tabBarIcon: ({tintColor}) => (
+        <Icon name={'search1'} color={tintColor} size={23} />
+      ),
     },
   },
   Notifications: {
@@ -34,6 +42,9 @@ const AppBottomNavigation = createBottomTabNavigator({
     navigationOptions: {
       title: null,
       headerShown: false,
+      tabBarIcon: ({tintColor}) => (
+        <Icon1 name={'md-notifications'} color={tintColor} size={23} />
+      ),
     },
   },
   Library: {
@@ -41,6 +52,9 @@ const AppBottomNavigation = createBottomTabNavigator({
     navigationOptions: {
       title: null,
       headerShown: false,
+      tabBarIcon: ({tintColor}) => (
+        <Icon name={'book'} color={tintColor} size={23} />
+      ),
     },
   },
 });
@@ -102,6 +116,7 @@ const AuthStack = createStackNavigator({
 
 export default createAppContainer(
   createSwitchNavigator({
+    SplashScreen: SplashScreen,
     AuthLoading: AuthLoading,
     App: AppStack,
     Auth: AuthStack,
