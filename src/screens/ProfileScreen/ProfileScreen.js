@@ -11,8 +11,12 @@ class ProfileScreen extends React.Component {
         <Header />
         <Text>HamzahBaig</Text>
         <Button
-          title={'MyBooks'}
-          onPress={() => this.props.navigation.navigate('MyBooks')}
+          title={'BorrowedBooks'}
+          onPress={() => this.props.navigation.navigate('BorrowedBooks')}
+        />
+         <Button
+          title={'LentBooks'}
+          onPress={() => this.props.navigation.navigate('LentBooks')}
         />
         <Button title={'LogOut'} onPress={this.props.signOut} />
       </View>

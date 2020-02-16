@@ -10,7 +10,8 @@ export const createProject = project => {
         ...project,
         available: true,
         lentDuration: null,
-        lentBy: null,
+        lentTo: null,
+        lentToId: null,
         authorFirstName: profile.firstName,
         authorLastName: profile.lastName,
         authorId: authorId,
@@ -30,12 +31,14 @@ export const lendBook = bookUpdate => {
   return (dispatch, getState, {getFirebase, getFirestore}) => {
     const firestore = getFirestore();
     const profile = getState().firebase.profile;
+    const authorId = getState().firebase.auth.uid;
     firestore
       .collection('books')
       .doc(bookUpdate.book.bookId)
       .update({
         available: false,
-        lentBy: profile.firstName + ' ' + profile.lastName,
+        lentTo: profile.firstName + ' ' + profile.lastName,
+        lentToId: authorId,
         lentDuration: Number(bookUpdate.lentDuration),
       })
       .then(() => {

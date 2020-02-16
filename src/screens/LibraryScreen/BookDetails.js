@@ -3,6 +3,7 @@ import {View, Text, StyleSheet, TextInput, Button} from 'react-native';
 import moment from 'moment';
 import {connect} from 'react-redux';
 import {lendBook} from '../../store/actions/projectActions';
+import firebase from 'firebase';
 class BookDetails extends React.Component {
   state = {
     lentDuration: null,
@@ -12,6 +13,40 @@ class BookDetails extends React.Component {
     this.setState({
       [key]: value,
     });
+  };
+
+  decideHandler = book => {
+    let userId = firebase.auth().currentUser.uid;
+    if (userId == book.authorId) {
+      if (book.available == true) {
+        return null;
+      } else {
+        return <Text>Book Lent to: {book.lentTo}</Text>;
+      }
+    } else if (book.available == false && userId != book.authorId) {
+      return <Text>Book Not Available for {book.lentDuration}</Text>;
+    } else if (book.available == true && userId != book.authorId) {
+      return (
+        <View>
+          <TextInput
+            placeholder={'lentDuration (days)'}
+            keyboardType={'numeric'}
+            style={{
+              height: 40,
+              borderBottomWidth: 1,
+              borderBottomColor: 'black',
+              width: '90%',
+              marginBottom: 30,
+            }}
+            onChangeText={this.handleChange('lentDuration')}
+          />
+          <Button
+            title={'Lend'}
+            onPress={() => this.props.lendBook({...this.state, book})}
+          />
+        </View>
+      );
+    }
   };
 
   render() {
@@ -24,28 +59,7 @@ class BookDetails extends React.Component {
           Book Owner: {book.authorFirstName} {book.authorLastName}
         </Text>
         <Text>Uploaded: {moment(book.createdAt.toDate()).fromNow()}</Text>
-        {book.available ? (
-          <View>
-            <TextInput
-              placeholder={'lentDuration (days)'}
-              keyboardType={'numeric'}
-              style={{
-                height: 40,
-                borderBottomWidth: 1,
-                borderBottomColor: 'black',
-                width: '90%',
-                marginBottom: 30,
-              }}
-              onChangeText={this.handleChange('lentDuration')}
-            />
-            <Button
-              title={'Lend'}
-              onPress={() => this.props.lendBook({...this.state, book})}
-            />
-          </View>
-        ) : (
-          <Text>Book Not Available for {book.lentDuration}</Text>
-        )}
+        {this.decideHandler(book)}
       </View>
     );
   }

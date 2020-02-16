@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import BookList from '../../components/Book/BookList';
 import Header from '../../components/Header/Header';
-
+import firebase from 'firebase';
 class Search extends React.Component {
   state = {
     searchedValue: '',
@@ -14,16 +14,25 @@ class Search extends React.Component {
 
   onValueChange = value => {
     this.setState({searchedValue: value});
+    let userId = firebase.auth().currentUser.uid;
 
     let filtering = [];
-    filtering = this.props.books.filter(book =>
-      book.bookName.toLowerCase().includes(value.toLowerCase()),
+    filtering = this.props.books.filter(
+      book =>
+        book.bookName.toLowerCase().includes(value.toLowerCase()) &&
+        book.authorId != userId &&
+        book.available == true,
     );
     console.log(filtering);
     this.setState({filtering: filtering});
   };
   render() {
-    const {books} = this.props;
+    let {books} = this.props;
+    let userId = firebase.auth().currentUser.uid;
+    books =
+      books &&
+      books.filter(book => book.authorId != userId && book.available == true);
+
     return (
       <View style={styles.containter}>
         <Header visible={true} onValueChange={this.onValueChange} />

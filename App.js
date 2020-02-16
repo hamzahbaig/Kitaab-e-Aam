@@ -12,7 +12,8 @@ import SignIn from './src/screens/Authentication/SignIn';
 import SignUp from './src/screens/Authentication/SignUp';
 import AddBooks from './src/screens/LibraryScreen/AddBooks';
 import BookDetails from './src/screens/LibraryScreen/BookDetails';
-import MyBooks from './src/screens/ProfileScreen/MyBooks'
+import BorrowedBooks from './src/screens/ProfileScreen/BorrowedBooks';
+import LentBooks from './src/screens/ProfileScreen/LentBooks';
 const AppBottomNavigation = createBottomTabNavigator({
   Profile: {
     screen: ProfileScreen,
@@ -42,6 +43,7 @@ const AppBottomNavigation = createBottomTabNavigator({
       headerShown: false,
     },
   },
+ 
 });
 const AppStack = createStackNavigator({
   MainStack: {
@@ -65,8 +67,15 @@ const AppStack = createStackNavigator({
       headerShown: false,
     },
   },
-  MyBooks: {
-    screen: MyBooks,
+  BorrowedBooks: {
+    screen: BorrowedBooks,
+    navigationOptions: {
+      title: null,
+      headerShown: false,
+    },
+  },
+  LentBooks: {
+    screen: LentBooks,
     navigationOptions: {
       title: null,
       headerShown: false,

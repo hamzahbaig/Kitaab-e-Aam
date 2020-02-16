@@ -5,14 +5,15 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import firebase from 'firebase';
-class MyBooks extends React.Component {
+class BorrowedBooks extends React.Component {
   render() {
     const {books} = this.props;
     let userId = firebase.auth().currentUser.uid;
-    let filtering = books.filter(book => book.authorId == userId);
+    let filtering = books && books.filter(book => book.lentToId == userId);
+
     return (
       <View style={styles.containter}>
-        <Text>MyBooks</Text>
+        <Text>BorrowedBooks</Text>
         <BookList books={filtering} navigation={this.props.navigation} />
       </View>
     );
@@ -45,4 +46,4 @@ export default compose(
       },
     ];
   }),
-)(MyBooks);
+)(BorrowedBooks);
