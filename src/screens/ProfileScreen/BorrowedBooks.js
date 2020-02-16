@@ -5,6 +5,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import firebase from 'firebase';
+import Header from '../../components/Header/Header'
 class BorrowedBooks extends React.Component {
   render() {
     const {books} = this.props;
@@ -13,7 +14,7 @@ class BorrowedBooks extends React.Component {
 
     return (
       <View style={styles.containter}>
-        <Text>BorrowedBooks</Text>
+        <Header title ={"Borrowed Books"}/>
         <BookList books={filtering} navigation={this.props.navigation} />
       </View>
     );

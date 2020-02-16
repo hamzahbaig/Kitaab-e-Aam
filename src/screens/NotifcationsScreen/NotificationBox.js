@@ -3,7 +3,9 @@ import {View, Text, StyleSheet, Dimensions, Button} from 'react-native';
 import moment from 'moment';
 import {connect} from 'react-redux';
 import {updateLend} from '../../store/actions/projectActions';
-import {Fonts} from '../../assets/fonts/Fonts'
+import {Fonts} from '../../assets/fonts/Fonts';
+import Icon from 'react-native-vector-icons/MaterialIcons';
+import Icon1 from 'react-native-vector-icons/Entypo';
 const phoneWidth = Dimensions.get('window').width;
 const phoneHeight = Dimensions.get('window').height;
 
@@ -19,26 +21,45 @@ class NotificationBox extends React.Component {
             fontSize: 16,
             marginTop: 10,
           }}>
-          {notification.lentTo} wants to borrow your book for{' '}
-          {notification.lentDuration} days
+          {notification.lentTo} wants to borrow your {notification.bookName} book for
+          {notification.lentDuration} days.
         </Text>
-        <Text >
-          Requested At: {moment(notification.createdAt.toDate()).fromNow()}
-        </Text>
-        <View style={{height:'30%',width:'100%',backgroundColor:'red'}}>
+
+        <View
+          style={{
+            height: '30%',
+            width: '100%',
+            flexDirection: 'row',
+            justifyContent: 'flex-start',
+            alignItems: 'center',
+            marginTop: 25,
+          }}>
+          <Text
+            style={{
+              fontFamily: Fonts.avenirHeavy,
+              color: '#68C1B5',
+              fontSize: 15,
+              marginRight: 60,
+            }}>
+            Requested At: {moment(notification.createdAt.toDate()).fromNow()}
+          </Text>
+          <Icon
+            size={40}
+            color={'green'}
+            name={'done'}
+            onPress={() =>
+              this.props.updateLend({...this.props.notification, result: false})
+            }
+          />
+          <Icon1
+            size={40}
+            color={'red'}
+            name={'cross'}
+            onPress={() =>
+              this.props.updateLend({...this.props.notification, result: true})
+            }
+          />
         </View>
-        <Button
-          title={'Accept'}
-          onPress={() =>
-            this.props.updateLend({...this.props.notification, result: false})
-          }
-        />
-        <Button
-          title={'Reject'}
-          onPress={() =>
-            this.props.updateLend({...this.props.notification, result: true})
-          }
-        />
       </View>
     );
   }

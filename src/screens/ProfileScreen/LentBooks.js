@@ -5,6 +5,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import firebase from 'firebase';
+import Header from '../../components/Header/Header'
 
 class LentBooks extends React.Component {
   render() {
@@ -13,7 +14,7 @@ class LentBooks extends React.Component {
     let filtering = books && books.filter(book => book.authorId == userId && !book.available);
     return (
       <View style={styles.containter}>
-        <Text>Lent Books</Text>
+        <Header title ={"Lent Books"}/>
         <BookList books={filtering} navigation={this.props.navigation} />
       </View>
     );

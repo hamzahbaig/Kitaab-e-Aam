@@ -1,4 +1,4 @@
-import authReducer from './authReducer';
+import authReducer from './AuthReducer';
 import projectReducer from './projectReducer';
 import {combineReducers} from 'redux';
 import {firestoreReducer} from 'redux-firestore';

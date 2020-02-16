@@ -4,7 +4,7 @@ import {name as appName} from './app.json';
 import {AppRegistry} from 'react-native';
 import {createStore, applyMiddleware, compose} from 'redux';
 import {Provider} from 'react-redux';
-import rootReducer from './src/store/reducers/rootReducer';
+import rootReducer from './src/store/reducers/RootReducer';
 import thunk from 'redux-thunk';
 
 import {
