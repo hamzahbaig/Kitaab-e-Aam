@@ -4,6 +4,7 @@ import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {firestoreConnect} from 'react-redux-firebase';
 import firebase from 'firebase';
+import Header from '../../components/Header/Header'
 import NotificationList from './NotificationList';
 class Notifications extends React.Component {
   render() {
@@ -14,7 +15,7 @@ class Notifications extends React.Component {
       notifications.filter(notification => notification.toId == userId);
     return (
       <View style={styles.containter}>
-        <Text>Notifications</Text>
+        <Header title={"Notifications"}/>
         <NotificationList notifications={notifications} />
       </View>
     );

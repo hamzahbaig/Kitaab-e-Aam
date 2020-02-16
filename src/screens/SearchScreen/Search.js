@@ -35,7 +35,7 @@ class Search extends React.Component {
 
     return (
       <View style={styles.containter}>
-        <Header visible={true} onValueChange={this.onValueChange} />
+        <Header visible={"Search"} onValueChange={this.onValueChange} />
         {this.state.searchedValue == '' ? (
           <BookList books={books} navigation={this.props.navigation} />
         ) : this.state.filtering === [] ? (

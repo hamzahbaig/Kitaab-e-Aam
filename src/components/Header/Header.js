@@ -1,5 +1,6 @@
 import React from 'react';
-import {View, Dimensions, StyleSheet, TextInput, Button} from 'react-native';
+import {View, Dimensions, StyleSheet, TextInput, Text} from 'react-native';
+import {Fonts} from '../../assets/fonts/Fonts';
 
 const phoneWidth = Dimensions.get('window').width;
 const phoneHeight = Dimensions.get('window').height;
@@ -7,7 +8,7 @@ const phoneHeight = Dimensions.get('window').height;
 const Header = props => {
   return (
     <View style={styles.container}>
-      {props.visible ? (
+      {props.visible == 'Search' ? (
         <TextInput
           placeholder={'Search..'}
           style={{
@@ -19,7 +20,12 @@ const Header = props => {
           }}
           onChangeText={props.onValueChange}
         />
-      ) : null}
+      ) : (
+        <Text
+          style={{fontSize: 28, fontFamily: Fonts.avenirBlack, color: 'white'}}>
+          {props.title}
+        </Text>
+      )}
     </View>
   );
 };
