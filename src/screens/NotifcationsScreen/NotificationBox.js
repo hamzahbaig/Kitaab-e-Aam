@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, StyleSheet, Dimensions, Button} from 'react-native';
+import {View, Text, StyleSheet, Dimensions, Button, ToastAndroid} from 'react-native';
 import moment from 'moment';
 import {connect} from 'react-redux';
 import {updateLend} from '../../store/actions/projectActions';
@@ -21,7 +21,8 @@ class NotificationBox extends React.Component {
             fontSize: 16,
             marginTop: 10,
           }}>
-          {notification.lentTo} wants to borrow your {notification.bookName} book for
+          {notification.lentTo} wants to borrow your {notification.bookName}{' '}
+          book for {""}
           {notification.lentDuration} days.
         </Text>
 
@@ -30,7 +31,7 @@ class NotificationBox extends React.Component {
             height: '30%',
             width: '100%',
             flexDirection: 'row',
-            justifyContent: 'flex-start',
+            justifyContent: 'space-between',
             alignItems: 'center',
             marginTop: 25,
           }}>
@@ -39,26 +40,37 @@ class NotificationBox extends React.Component {
               fontFamily: Fonts.avenirHeavy,
               color: '#68C1B5',
               fontSize: 15,
-              marginRight: 60,
             }}>
             Requested At: {moment(notification.createdAt.toDate()).fromNow()}
           </Text>
-          <Icon
-            size={40}
-            color={'green'}
-            name={'done'}
-            onPress={() =>
-              this.props.updateLend({...this.props.notification, result: false})
-            }
-          />
-          <Icon1
-            size={40}
-            color={'red'}
-            name={'cross'}
-            onPress={() =>
-              this.props.updateLend({...this.props.notification, result: true})
-            }
-          />
+          <View style={{flexDirection:'row'}}>
+            <Icon
+              size={40}
+              color={'green'}
+              name={'done'}
+              onPress={() =>{
+                ToastAndroid.show('Accepting Request', ToastAndroid.SHORT);
+                this.props.updateLend({
+                  ...this.props.notification,
+                  result: false,
+                })}
+              }
+            />
+            <Icon1
+              size={40}
+              color={'red'}
+              name={'cross'}
+              onPress={() =>{
+                ToastAndroid.show('Rejecting Request', ToastAndroid.SHORT);
+
+                this.props.updateLend({
+                  ...this.props.notification,
+                  result: true,
+                })
+              }
+              }
+            />
+          </View>
         </View>
       </View>
     );

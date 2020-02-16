@@ -4,8 +4,7 @@ import {
   Text,
   StyleSheet,
   TextInput,
-  Button,
-  ScrollView,
+  ToastAndroid,
 } from 'react-native';
 import moment from 'moment';
 import {connect} from 'react-redux';
@@ -29,17 +28,37 @@ class BookDetails extends React.Component {
     let userId = firebase.auth().currentUser.uid;
     if (userId == book.authorId) {
       if (book.available == true) {
-        return null;
+        return ( <Text
+          style={{
+            fontFamily: Fonts.avenirLight,
+            color: 'black',
+            fontSize: 18,
+            marginTop: 10,
+            marginLeft: 5,
+          }}>
+          Nobody Requested for your book Yet!
+        </Text>);
       } else {
-        return <Text>Book Lent to: {book.lentTo}</Text>;
+        return (
+          <Text
+            style={{
+              fontFamily: Fonts.avenirLight,
+              color: 'black',
+              fontSize: 18,
+              marginTop: 10,
+              marginLeft: 5,
+            }}>
+            Book Lent to: {book.lentTo}
+          </Text>
+        );
       }
     } else if (book.available == false && userId != book.authorId) {
-      return <Text>Book Not Available for {book.lentDuration}</Text>;
+      return <Text>Book Not Available for {book.lentDuration} days</Text>;
     } else if (book.available == true && userId != book.authorId) {
       return (
         <View style={{justifyContent: 'center', alignItems: 'center'}}>
           <TextInput
-            placeholder={'Lent Duration.. (days)'}
+            placeholder={'Borrow Duration.. (days)'}
             keyboardType={'numeric'}
             style={{
               height: 40,
@@ -53,7 +72,10 @@ class BookDetails extends React.Component {
           />
           <ButtonComponent
             title={'Request for Book'}
-            onPress={() => this.props.lendBook({...this.state, book})}
+            onPress={() => {
+              ToastAndroid.show('Requesting for Book..', ToastAndroid.SHORT);
+              this.props.lendBook({...this.state, book});
+            }}
           />
         </View>
       );

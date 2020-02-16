@@ -39,6 +39,7 @@ export default class SplashScreen extends React.Component {
             justifyContent: 'center',
             alignItems: 'center',
             flexDirection: 'row',
+            marginRight:20
           }}>
           <StatusBar backgroundColor="#68C1B5" barStyle="light-content" />
           <Animatable.View
@@ -46,9 +47,8 @@ export default class SplashScreen extends React.Component {
             style={{
               width: '50%',
               height: '20%',
-              paddingLeft: 55,
               justifyContent: 'center',
-              alignItems: 'center',
+              alignItems: 'flex-end',
             }}>
             <Text style={{fontSize: 80, color: 'white'}}>عام</Text>
           </Animatable.View>
@@ -58,8 +58,7 @@ export default class SplashScreen extends React.Component {
               width: '50%',
               height: '20%',
               justifyContent: 'center',
-              alignItems: 'center',
-              paddingRight: 50,
+              alignItems: 'flex-start',
             }}>
             <Text style={{fontSize: 80, color: 'white'}}>کتاب</Text>
           </Animatable.View>

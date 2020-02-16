@@ -11,7 +11,7 @@ class ProfileScreen extends React.Component {
     return (
       <View style={{height: '100%', width: '100%', backgroundColor: 'white'}}>
         <StatusBar backgroundColor="#68C1B5" barStyle="light-content" />
-        <Header title={'Profile'} />
+        <Header title={'کتاب عام '} fontSize={40} />
         <View
           style={{
             height: '20%',

@@ -4,14 +4,17 @@ import {
   StyleSheet,
   TextInput,
   Text,
-  Button,
   StatusBar,
-  KeyboardAvoidingView
+  KeyboardAvoidingView,
+  ToastAndroid,
+  Dimensions
 } from 'react-native';
 import {connect} from 'react-redux';
 import {signIn} from '../../store/actions/authActions';
 import {Fonts} from '../../assets/fonts/Fonts';
 import ButtonComponent from '../../components/Button/ButtonComponent';
+const phoneWidth = Dimensions.get('window').width;
+const phoneHeight = Dimensions.get('window').height;
 class SignIn extends React.Component {
   state = {
     email: '',
@@ -25,6 +28,7 @@ class SignIn extends React.Component {
   };
 
   handleSubmit = e => {
+    ToastAndroid.show('Signing Again.', ToastAndroid.SHORT);
     this.props.signIn(this.state);
   };
 
@@ -38,10 +42,11 @@ class SignIn extends React.Component {
         </Text>
         <View
           style={{
-            height: '30%',
-            width: '90%',
+            height: phoneHeight * 0.30,
+            width: phoneWidth * 0.90,
             justifyContent: 'center',
             alignItems: 'center',
+            marginTop:30
           }}>
           <TextInput
             placeholder={'Email'}
@@ -67,12 +72,14 @@ class SignIn extends React.Component {
             onChangeText={this.handleChange('password')}
           />
         </View>
+       
         <View
           style={{
-            height: '20%',
+            height: '10%',
             width: '90%',
             justifyContent: 'center',
             alignItems: 'center',
+            marginTop:60
           }}>
           <ButtonComponent title={'Get Started'} onPress={this.handleSubmit} />
         </View>
@@ -82,9 +89,9 @@ class SignIn extends React.Component {
             width: '80%',
             flexDirection: 'row',
             justifyContent: 'center',
-            justifyContent:'space-between',
-            alignItems:'center',
-            marginTop:40,
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginTop: 5,
           }}>
           <View
             style={{
@@ -104,10 +111,11 @@ class SignIn extends React.Component {
         </View>
         <View
           style={{
-            height: '20%',
+            height: '10%',
             width: '90%',
             justifyContent: 'center',
             alignItems: 'center',
+            marginTop:10
           }}>
           <ButtonComponent
             title={'Register'}

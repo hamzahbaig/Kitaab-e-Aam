@@ -4,14 +4,16 @@ import {
   StyleSheet,
   TextInput,
   Text,
-  Button,
+  Dimensions,
   StatusBar,
+  ToastAndroid
 } from 'react-native';
 import {connect} from 'react-redux';
 import {signUp} from '../../store/actions/authActions';
 import {Fonts} from '../../assets/fonts/Fonts';
 import ButtonComponent from '../../components/Button/ButtonComponent';
-
+const phoneWidth = Dimensions.get('window').width;
+const phoneHeight = Dimensions.get('window').height;
 class SignUp extends React.Component {
   state = {
     email: '',
@@ -26,6 +28,7 @@ class SignUp extends React.Component {
   };
 
   handleSubmit = e => {
+    ToastAndroid.show('Signing Up.', ToastAndroid.SHORT);
     this.props.signUp(this.state);
   };
   render() {
@@ -39,8 +42,8 @@ class SignUp extends React.Component {
         </Text>
         <View
           style={{
-            height: '40%',
-            width: '90%',
+            height: phoneHeight * 0.40,
+            width: phoneWidth * 0.90,
             justifyContent: 'center',
             alignItems: 'center',
             marginTop:20

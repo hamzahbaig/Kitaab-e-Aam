@@ -22,7 +22,7 @@ const Header = props => {
         />
       ) : (
         <Text
-          style={{fontSize: 28, fontFamily: Fonts.avenirBlack, color: 'white'}}>
+          style={{fontSize: props.fontSize ? props.fontSize : 26, fontFamily: Fonts.avenirBlack, color: 'white'}}>
           {props.title}
         </Text>
       )}

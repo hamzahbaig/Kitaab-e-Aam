@@ -7,6 +7,7 @@ import {
   Button,
   StatusBar,
   KeyboardAvoidingView,
+  ToastAndroid,
 } from 'react-native';
 import {connect} from 'react-redux';
 import {createProject} from '../../store/actions/projectActions';
@@ -26,6 +27,7 @@ class AddBooks extends React.Component {
   };
 
   handleSubmit = e => {
+    console.log('HAmzah');
     this.props.createProject(this.state);
   };
 
@@ -70,7 +72,10 @@ class AddBooks extends React.Component {
         </View>
         <ButtonComponent
           title={'Add your Book'}
-          onPress={() => this.props.createProject(this.state)}
+          onPress={() => {
+            ToastAndroid.show('Adding Book.', ToastAndroid.SHORT);
+            this.props.createProject(this.state);
+          }}
         />
       </View>
     );
