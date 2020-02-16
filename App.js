@@ -44,6 +44,7 @@ const AppBottomNavigation = createBottomTabNavigator({
     },
   },
 });
+
 const AppStack = createStackNavigator({
   MainStack: {
     screen: AppBottomNavigation,

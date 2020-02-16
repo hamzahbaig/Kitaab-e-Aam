@@ -140,7 +140,7 @@ class ProfileScreen extends React.Component {
             <Text
               style={{
                 fontFamily: Fonts.avenirMedium,
-                color: 'red',
+                color: '#68C1B5',
                 fontSize: 18,
               }}>
               Logout
