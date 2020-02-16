@@ -21,6 +21,12 @@ const projectReducer = (state = initState, action) => {
     case 'BOOK_UPDATE_FAILED':
       console.log('Book Update Fail');
       return state;
+      case 'LEND_DONE':
+      console.log('Lend Done');
+      return state;
+    case 'LEND_REJECTED':
+      console.log('Lend Failed');
+      return state;
     default:
       return state;
   }

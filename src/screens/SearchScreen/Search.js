@@ -6,6 +6,7 @@ import {firestoreConnect} from 'react-redux-firebase';
 import BookList from '../../components/Book/BookList';
 import Header from '../../components/Header/Header';
 import firebase from 'firebase';
+
 class Search extends React.Component {
   state = {
     searchedValue: '',
@@ -23,7 +24,6 @@ class Search extends React.Component {
         book.authorId != userId &&
         book.available == true,
     );
-    console.log(filtering);
     this.setState({filtering: filtering});
   };
   render() {
